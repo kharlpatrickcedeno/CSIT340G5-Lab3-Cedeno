@@ -1,121 +1,67 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const Header = (props) => {
+  return <h1>{props.course}</h1>
+}
+
+const Content = (props) => {
+  return (
+    <div className="content">
+      <p className="row">
+        <span>{props.part1}</span> <span className="units">{props.units1}</span>
+      </p>
+      <p className="row">
+        <span>{props.part2}</span> <span className="units">{props.units2}</span>
+      </p>
+      <p className="row">
+        <span>{props.part3}</span> <span className="units">{props.units3}</span>
+      </p>
+    </div>
+  )
+}
+
+const Total = (props) => {
+  return (
+    <p className="row total">
+      <span>Total units</span> <span className="units">{props.total}</span>
+    </p>
+  )
+}
+
+const Footer = (props) => {
+  return (
+    <footer>
+      {props.studentName} - {props.courseCode} - {props.section}
+    </footer>
+  )
+}
+
+const App = () => {
+  const course = 'Industry Elective 1'
+  const part1 = 'Data Analytics 1'
+  const units1 = 3
+  const part2 = 'Networking 2'
+  const units2 = 3
+  const part3 = 'Information Management 2'
+  const units3 = 3
+  const studentName = 'Kharl Patrick R. Cedeño'
+  const courseCode = 'CSIT340'
+  const section = 'G5'
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    <div className="card">
+      <Header course={course} />
+      <Content
+        part1={part1}
+        units1={units1}
+        part2={part2}
+        units2={units2}
+        part3={part3}
+        units3={units3}
+      />
+      <Total total={units1 + units2 + units3} />
+      <Footer studentName={studentName} courseCode={courseCode} section={section} />
+    </div>
   )
 }
 
